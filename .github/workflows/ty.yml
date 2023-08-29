@@ -22,7 +22,7 @@ jobs:
           pip install PyGithub
 
       - name: Run Python script
-        run: python .github/workflows/auto_thank_you.py
+        run: python .github/workflows/autoty.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
