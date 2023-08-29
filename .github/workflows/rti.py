@@ -4,7 +4,7 @@ from github import Github
 
 # GitHub Access Token (Generiere ein Token mit den erforderlichen Berechtigungen)
 # ACCESS_TOKEN = os.environ.get('GITHUB_TOKEN')
-ACCESS_TOKEN = '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'
+ACCESS_TOKEN = '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'
 
 # Repository Informationen
 REPO_OWNER = 'Montchy'  # Dein GitHub Benutzername
