@@ -1,29 +1,27 @@
 import os
-import requests
+import json
 from github import Github
-
-# GitHub Access Token (Generiere ein Token mit den erforderlichen Berechtigungen)
-# ACCESS_TOKEN = os.environ.get('GITHUB_TOKEN')
-ACCESS_TOKEN = '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'
-
-# Repository Informationen
-REPO_OWNER = 'Montchy'  # Dein GitHub Benutzername
-REPO_NAME = 'GitHubBotTest'  # Der Name deines Repositories
-
-# Issue Nachricht
-ISSUE_MESSAGE = "Danke für das Einreichen des Problems!"
+from github.GithubException import GithubException
 
 def main():
-    # Initialisiere die GitHub API
-    g = Github(ACCESS_TOKEN)
-    repo = g.get_repo(f"{REPO_OWNER}/{REPO_NAME}")
+    try:
+        issue_comment = """
+        Thank you for creating this issue! We appreciate your feedback. 👍
+        
+        If you have any questions or need further assistance, feel free to ask.
+        """
 
-    # Erhalte die Issue-Nummer aus der Umgebungsvariable
-    issue_number = os.environ.get('ISSUE_NUMBER')
-    
-    # Antworte auf das Issue
-    issue = repo.get_issue(int(issue_number))
-    issue.create_comment(ISSUE_MESSAGE)
+        github_token = os.getenv("GITHUB_TOKEN")
+        repo = os.getenv("GITHUB_REPOSITORY")
+        issue_number = os.getenv("ISSUE_NUMBER")
+
+        g = Github(github_token)
+        repo_obj = g.get_repo(repo)
+        issue_obj = repo_obj.get_issue(int(issue_number))
+        issue_obj.create_comment(issue_comment)
+    except GithubException as e:
+        print(f"An error occurred: {e}")
+        exit(1)
 
 if __name__ == "__main__":
     main()
