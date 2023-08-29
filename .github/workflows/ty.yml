@@ -19,16 +19,14 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { context, github } = require('@actions/github');
-            
             const issueComment = `
             Thank you for creating this issue! We appreciate your feedback. 👍
             
             If you have any questions or need further assistance, feel free to ask.
             `;
             github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+              issue_number: github.context.issue.number,
+              owner: github.context.repo.owner,
+              repo: github.context.repo.repo,
               body: issueComment
             });
