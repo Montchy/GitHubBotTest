@@ -1,1 +1,15 @@
 
+- name: Install Python
+  uses: actions/setup-python@v2
+  with:
+    python-version: '3.8'
+
+- name: Install dependencies
+  run: pip install PyGithub
+
+- name: Run Python script
+  run: python .github/workflows/auto_thank_you.py
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GITHUB_REPOSITORY: ${{ github.repository }}
+    GITHUB_EVENT_PATH: ${{ github.event_path }}
