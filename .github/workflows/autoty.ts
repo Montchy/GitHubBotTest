@@ -1,5 +1,6 @@
 console.log("Script got started");
 
+/*
 function identify(s: string) {
   if (("" + s).startsWith("🐛")) {
     return "bug";
@@ -41,3 +42,4 @@ function checkFeature(s: string) {
   }
   console.log("Check:" + s);
 }
+*/
