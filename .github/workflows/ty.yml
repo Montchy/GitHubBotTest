@@ -21,9 +21,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyGithub
 
+      - name: Set issue number
+        id: extract_issue_number
+        run: echo "GITHUB_ISSUE_NUMBER=$(jq -r .issue.number \"$GITHUB_EVENT_PATH\")" >> $GITHUB_ENV
+
       - name: Run Python script
         run: python .github/workflows/autoty.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_EVENT_PATH: ${{ github.event_path }}
