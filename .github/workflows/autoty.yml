@@ -17,7 +17,7 @@ jobs:
           python-version: "3.x" # Set the appropriate Python version
 
 
-      - name: Run Python script
+      - name: Run Typescript
         run: python .github/workflows/autoty.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
