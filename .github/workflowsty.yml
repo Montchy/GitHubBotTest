@@ -1,0 +1,32 @@
+name: Auto Thank You for Issues
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  thank-you:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: git config --global user.email "actions@example.com" && git config --global user.name "GitHub Actions"
+
+      - name: Comment on Issue
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issueComment = `
+            Thank you for creating this issue! We appreciate your feedback. 👍
+            
+            If you have any questions or need further assistance, feel free to ask.
+            `;
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: issueComment
+            });
