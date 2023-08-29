@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install PyGithub
+          pip install gidgethub
 
       - name: Run Python script
         run: python .github/workflows/autoty.py
