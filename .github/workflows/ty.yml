@@ -8,25 +8,10 @@ jobs:
   thank-you:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Set up Git
-        run: git config --global user.email "actions@example.com" && git config --global user.name "GitHub Actions"
-
       - name: Comment on Issue
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issueComment = `
-            Thank you for creating this issue! We appreciate your feedback. 👍
-            
-            If you have any questions or need further assistance, feel free to ask.
-            `;
-            github.issues.createComment({
-              issue_number: github.context.issue.number,
-              owner: github.context.repo.owner,
-              repo: github.context.repo.repo,
-              body: issueComment
-            });
+        run: |
+          ISSUE_NUMBER=$(jq -r .issue.number "$GITHUB_EVENT_PATH")
+          COMMENT="Thank you for creating this issue! We appreciate your feedback. 👍\n\nIf you have any questions or need further assistance, feel free to ask."
+          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}/comments"
+          RESPONSE=$(curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d "{\"body\":\"$COMMENT\"}" "$URL")
+          echo "Comment response: $RESPONSE"
