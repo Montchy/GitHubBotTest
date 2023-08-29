@@ -19,6 +19,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const { context, github } = require('@actions/github');
+            
             const issueComment = `
             Thank you for creating this issue! We appreciate your feedback. 👍
             
