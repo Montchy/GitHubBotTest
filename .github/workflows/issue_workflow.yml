@@ -19,5 +19,5 @@ jobs:
           python-version: 3.x
 
       - name: Run Python script
-        run: python respond_to_issue.py
+        run: python rti.py
 
