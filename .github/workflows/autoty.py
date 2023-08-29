@@ -13,11 +13,15 @@ def main():
 
         github_token = os.getenv("GITHUB_TOKEN")
         repo = os.getenv("GITHUB_REPOSITORY")
-        issue_number = os.getenv("ISSUE_NUMBER")
+        
+        # Retrieve issue number from the event payload
+        with open(os.getenv("GITHUB_EVENT_PATH"), "r") as event_file:
+            event_data = json.load(event_file)
+            issue_number = event_data["issue"]["number"]
 
         g = Github(github_token)
         repo_obj = g.get_repo(repo)
-        issue_obj = repo_obj.get_issue(int(issue_number))
+        issue_obj = repo_obj.get_issue(issue_number)
         issue_obj.create_comment(issue_comment)
     except GithubException as e:
         print(f"An error occurred: {e}")
