@@ -1,7 +1,6 @@
 import os
 import json
-from gidgethub import GitHubException
-
+from gidgethub import GitHubBroken, GitHubException
 
 def main():
     try:
@@ -19,11 +18,11 @@ def main():
             event_data = json.load(event_file)
             issue_number = event_data["issue"]["number"]
 
-        g = GitHubException(github_token)
+        g = GitHubBroken(github_token)
         repo_obj = g.get_repo(repo)
         issue_obj = repo_obj.get_issue(issue_number)
         issue_obj.create_comment(issue_comment)
-    except Exception as e:
+    except GitHubException as e:
         print(f"An error occurred: {e}")
         exit(1)
 
