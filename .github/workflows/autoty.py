@@ -1,8 +1,6 @@
-
 import os
 from github import Github
 from github.GithubException import GithubException
-from github.GithubObject import NotSet
 
 def main():
     try:
@@ -14,7 +12,7 @@ def main():
 
         github_token = os.getenv("GITHUB_TOKEN")
         repo = os.getenv("GITHUB_REPOSITORY")
-        issue_number = os.getenv("GITHUB_EVENT_PATH").split("/")[-1]
+        issue_number = os.getenv("GITHUB_ISSUE_NUMBER")
 
         g = Github(github_token)
         repo_obj = g.get_repo(repo)
