@@ -12,6 +12,6 @@ export function identify(s: string) {
     console.log("Identity: QUESTION");
     return "question";
   } else {
-    return "unsure";
+    return "l";
   }
 }

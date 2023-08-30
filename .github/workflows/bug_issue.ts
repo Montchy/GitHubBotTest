@@ -23,9 +23,20 @@ export function cleanBody(title: string, body: string) {
         console.log("Didn‘t Wwork: " + s);
       }
     });
+
+    for (const key in labels) {
+      if (labels.hasOwnProperty(key)) {
+        const value = labels[key];
+        console.log("KEY:" + key);
+        console.log("CASE: VALUE = REPRODUCABLE CODE");
+        cleanup(key);
+      }
+    }
+
     console.log("/////////////");
     console.log(labels);
     console.log("/////////////");
+    console.log("test:" + labels[" Reproduceable Code"]);
   } else return "l";
 }
 
@@ -35,6 +46,9 @@ function cleanup(key: string) {
   }
   if (key == " Reproduceable Code") {
     let value = labels[key];
+    value = value + "TEST TEST";
+    console.log("in cleanup!!!!");
+    labels[key] = value;
   }
   if (key == " What happened instead?") {
     let value = labels[key];
@@ -48,5 +62,5 @@ function cleanup(key: string) {
   if (key == " VisionCamera Version") {
     let value = labels[key];
   }
-  return null;
+  return "l";
 }
