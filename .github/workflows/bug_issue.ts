@@ -15,8 +15,9 @@ export function cleanBody(title: string, body: string) {
         const twPart = s.split("\n");
         const key = twPart[0];
         const value = twPart.slice(1).join("\n");
+        const cleanvalue = value.replace(/\n/g, "");
 
-        labels[key] = value;
+        labels[key] = cleanvalue;
         console.log("Worked: " + labels[key]);
       } catch (error) {
         console.log("Didn‘t Wwork: " + s);
