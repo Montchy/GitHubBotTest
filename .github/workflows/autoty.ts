@@ -38,7 +38,8 @@ async function run() {
     const ss = issue.data.labels.toString();
 
     console.log("/////////////////////");
-    identify(title);
+    const identity = identify(title);
+    console.log(identity + "!!!!!!");
     console.log("/////////////////////");
     const c = cleanBody(title, body + "");
     console.log(c + "!!!!!!!!!!!!!!!!");
