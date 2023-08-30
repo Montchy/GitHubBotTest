@@ -30,6 +30,7 @@ async function run() {
 
     const [owner, repo] = repository.split("/"); // Split owner and repo
     console.log("4");
+
     await octokit.rest.issues.createComment({
       owner: owner,
       repo: repo,
@@ -40,7 +41,7 @@ async function run() {
     console.log("Comment created successfully.");
   } catch (error: any) {
     // Specify the type as 'any'
-    core.setFailed(`An error occurred: ${error.message}`);
+    core.setFailed(`An error occurred (end): ${error.message}`);
   }
 }
 
