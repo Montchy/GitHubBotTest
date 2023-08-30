@@ -16,7 +16,7 @@ export function identify(s: string) {
   }
 }
 
-function checkUnsure(s) {
+function checkUnsure(s: string) {
   if (s == "unsure") {
     //Title was wrong, close / delete after
     return "Something with you title seems to be wrong, check if the right emoji is at the beginning of your title";
