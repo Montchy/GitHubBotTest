@@ -2,6 +2,8 @@ import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 
 async function run() {
+  console.log(process.env.TOKEN);
+
   try {
     const issueComment = `
     Thank you for creating this issue! We appreciate your feedback. 👍
