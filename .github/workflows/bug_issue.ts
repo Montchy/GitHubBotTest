@@ -75,7 +75,7 @@ function isSemVer(version: string): boolean {
   return semVerPattern.test(version);
 }
 
-function errorAdd(value) {
+function errorAdd(value: string) {
   if (error == "") {
     error = "Errors: \n" + value;
   }
