@@ -1,5 +1,6 @@
 import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
+import { cleanBody } from "./bug_issue";
 
 async function run() {
   console.log(process.env.TOKEN);
@@ -35,6 +36,8 @@ async function run() {
     const title = issue.data.title;
     const body = issue.data.body;
     const ss = issue.data.labels.toString();
+
+    cleanBody(title, body);
 
     console.log(title);
     console.log("////////////////////");
