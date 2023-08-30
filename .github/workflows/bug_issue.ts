@@ -44,8 +44,8 @@ function cleanup(key: string) {
   }
   if (key == " Reproduceable Code") {
     let value = labels[key];
-    console.log(value.length);
-    if (value != "" && value != null && value.length >= 5) {
+
+    if (value != "" && value != null && value.length >= 14) {
     } else errorAdd("!Reproducable Code: Empty or less than 5 letters\n");
   }
   if (key == " What happened instead?") {
@@ -56,7 +56,7 @@ function cleanup(key: string) {
   if (key == " Relevant log output") {
     let value = labels[key];
     console.log(value.length);
-    if (value != "" && value != null && value.length >= 5) {
+    if (value != "" && value != null && value.length >= 16) {
     } else errorAdd("!Relevant log output: Empty or less than 5 letters\n");
   }
   if (key == " Device") {
