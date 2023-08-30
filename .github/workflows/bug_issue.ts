@@ -26,5 +26,7 @@ export function cleanBody(title: string, body: string) {
     console.log("/////////////");
     console.log(labels);
     console.log("/////////////");
+    console.log(labels["What were youtrying to do?"]);
+    console.log("/////////////");
   } else return "l";
 }
