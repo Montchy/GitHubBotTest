@@ -2,11 +2,11 @@ let labels: { [key: string]: string } = {};
 let error = "";
 
 function cleanTitle(title: string) {
-  if (!title.startsWith("🐛")) {
-    errorAdd("Title: Emoji has to be at the beginning of your Title");
+  if (title.includes("🐛") && title.indexOf("🐛") > 0) {
+    errorAdd("!Title: Emoji has to be at the beginning of your Title \n");
     return "w";
   } else if (title.length < 5) {
-    errorAdd("Title: Title is to short");
+    errorAdd("!Title: Title is to short \n");
     return "w";
   } else return "w";
 }
@@ -24,10 +24,7 @@ export function cleanBody(title: string, body: string) {
         const cleanvalue = valuec.replace(/\n/g, " ");
 
         labels[key] = cleanvalue;
-        console.log("Worked: " + labels[key]);
-      } catch (error) {
-        console.log("Didn‘t Wwork: " + s);
-      }
+      } catch (error) {}
     });
 
     for (const key in labels) {
@@ -70,7 +67,7 @@ function cleanup(key: string) {
   if (key == " VisionCamera Version") {
     let value = labels[key];
     const cleanvalue = value.replace(" ", "");
-    console.log("Semver: " + isSemVer(cleanvalue) + "  // " + cleanvalue);
+
     if (isSemVer(cleanvalue) == true) {
       return null;
     } else errorAdd("!VisionCamera Version: Isn't SemVer!\n");

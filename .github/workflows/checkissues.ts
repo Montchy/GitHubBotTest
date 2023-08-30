@@ -1,14 +1,21 @@
-export function identify(s: string) {
+export function identify(title: string) {
   console.log("Identifier is running...");
-  if (("" + s).startsWith("🐛")) {
+  if (
+    (title.includes("🐛") && title.includes("✨")) ||
+    (title.includes("🐛") && title.includes("❓")) ||
+    (title.includes("❓") && title.includes("✨"))
+  ) {
+    return "toManyEmojis";
+  }
+  if (title.includes("🐛")) {
     console.log("Identity: BUG");
     return "bug";
   }
-  if (("" + s).startsWith("✨")) {
+  if (title.includes("✨")) {
     console.log("Identity: FEATURE");
     return "feature";
   }
-  if (("" + s).startsWith("❓")) {
+  if (title.includes("❓")) {
     console.log("Identity: QUESTION");
     return "question";
   } else {

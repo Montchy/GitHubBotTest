@@ -38,40 +38,57 @@ async function run() {
     const ss = issue.data.labels.toString();
 
     const identity = identify(title);
+    console.log(identity);
     const c = cleanBody(title, body + "");
 
-    if (returnError() != "") {
-      await octokit.rest.issues.createComment({
-        owner: owner,
-        repo: repo,
-        issue_number: issueNumber,
-        body: returnError(),
-      });
+    if (identity == "bug") {
+      console.log("IN BUG");
+      if (returnError() != "") {
+        await octokit.rest.issues.createComment({
+          owner: owner,
+          repo: repo,
+          issue_number: issueNumber,
+          body: returnError(),
+        });
 
-      await octokit.rest.issues.update({
-        owner: owner,
-        repo: repo,
-        issue_number: issueNumber,
-        state: "closed", // Set the state to "closed"
-      });
+        await octokit.rest.issues.update({
+          owner: owner,
+          repo: repo,
+          issue_number: issueNumber,
+          state: "closed", // Set the state to "closed"
+        });
 
-      console.log("Issue closed successfully.");
-    } else {
-      await octokit.rest.issues.createComment({
-        owner: owner,
-        repo: repo,
-        issue_number: issueNumber,
-        body: issueComment,
-      });
+        console.log("Issue closed successfully.");
+      } else {
+        await octokit.rest.issues.createComment({
+          owner: owner,
+          repo: repo,
+          issue_number: issueNumber,
+          body: issueComment,
+        });
 
-      console.log("Comment created successfully.");
+        console.log("Comment created successfully.");
+      }
+    }
+    if (identity == "feature") {
+      //TODO
+      console.log(identity);
+    }
+    if (identity == "question") {
+      //TODO
+      console.log(identity);
+    }
+    if (identity == "toManyEmojis") {
+      //TODO
+      console.log(identity);
+    }
+    if (identity == "l") {
+      //TODO
+      console.log(identity);
     }
   } catch (error: any) {
     core.setFailed(`An error occurred (end): ${error.message}`);
   }
-
-  console.log("/////////////");
-  console.log(returnError());
 }
 
 run();
