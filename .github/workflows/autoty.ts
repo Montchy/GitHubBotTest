@@ -3,7 +3,6 @@ import { context, getOctokit } from "@actions/github";
 import { cleanBody } from "./bug_issue";
 
 async function run() {
-  console.log(process.env.TOKEN);
   try {
     let issueComment = ` Placeholder `;
 
@@ -38,12 +37,6 @@ async function run() {
     const ss = issue.data.labels.toString();
 
     cleanBody(title, body + "");
-
-    console.log(title);
-    console.log("////////////////////");
-    console.log(body);
-    console.log("////////////////////");
-    console.log(ss);
 
     await octokit.rest.issues.createComment({
       owner: owner,
