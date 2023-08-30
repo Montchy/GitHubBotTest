@@ -64,16 +64,18 @@ function cleanup(key: string) {
   }
   if (key == " VisionCamera Version") {
     let value = labels[key];
-    if (isSemVer(value)) {
+    if (isSemVer(value) == true) {
       return null;
     } else errorAdd("!VisionCamera Version: Isn't SemVer!\n");
   }
   return "Fatal error";
 }
 
-function isSemVer(version: string): boolean {
-  const semVerPattern = /^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?(\+[a-zA-Z0-9.-]+)?$/;
-  return semVerPattern.test(version);
+const semverPattern =
+  /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/;
+
+function isSemVer(input: string) {
+  return semverPattern.test(input);
 }
 
 function errorAdd(value: string) {
