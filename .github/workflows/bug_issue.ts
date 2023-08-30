@@ -73,11 +73,17 @@ function cleanup(key: string) {
   return "Fatal error";
 }
 
-const semverPattern =
-  /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/;
-
 function isSemVer(input: string) {
-  return semverPattern.test(input);
+  const charArray = input.split("");
+  if (charArray[1] == "." && charArray[3] == ".") {
+    if (
+      !isNaN(Number(charArray[0])) &&
+      !isNaN(Number(charArray[2])) &&
+      !isNaN(Number(charArray[4]))
+    ) {
+      return true;
+    }
+  } else return false;
 }
 
 function errorAdd(value: string) {
