@@ -5,9 +5,12 @@ on:
       - opened
 
 jobs:
-  thank-you:
+  to-the-steps:
     runs-on: ubuntu-latest
     steps:
+      - name: try envi
+        run: echo "Value -> ${{vars.TESTSECRET}} "
+
       - name: Check out code
         uses: actions/checkout@v2
 
