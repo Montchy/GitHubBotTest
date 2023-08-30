@@ -10,6 +10,7 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TOKEN: ${{secrets.TOKEN}}
+      TOKEN2: ${{vars.TOKEN}}
 
     steps:
       - name: GITHUB_TOKEN
@@ -17,6 +18,9 @@ jobs:
 
       - name: TOKEN
         run: echo "TOKEN -> $TOKEN"
+
+      - name: VARS TOKEN
+        run: echo "TOKEN -> $TOKEN2"
 
       - name: Check out code
         uses: actions/checkout@v2
