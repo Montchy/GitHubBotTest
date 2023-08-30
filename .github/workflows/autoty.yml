@@ -7,9 +7,15 @@ on:
 jobs:
   to-the-steps:
     runs-on: ubuntu-latest
+    env:
+      ID: ${{vars.TESTSECRET}}
+
     steps:
-      - name: try envi
-        run: echo "Value -> ${{vars.TESTSECRET}} "
+      - name: try byCall
+        run: echo "ValueByCall -> ${{vars.TESTSECRET}} "
+
+      - name: try byName
+        run: echo "ValueByName -> $ID"
 
       - name: Check out code
         uses: actions/checkout@v2
