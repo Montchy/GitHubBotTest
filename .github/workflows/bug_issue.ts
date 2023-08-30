@@ -22,5 +22,8 @@ export function cleanBody(title: string, body: string) {
         console.log("Didn‘t Wwork: " + s);
       }
     });
+    console.log("/////////////");
+    console.log(labels.toString());
+    console.log("/////////////");
   } else return "l";
 }
