@@ -38,11 +38,9 @@ async function run() {
     const ss = issue.data.labels.toString();
 
     const identity = identify(title);
-    console.log(identity);
     const c = cleanBody(title, body + "");
 
     if (identity == "bug") {
-      console.log("IN BUG");
       if (returnError() != "") {
         await octokit.rest.issues.createComment({
           owner: owner,
@@ -81,10 +79,38 @@ async function run() {
     if (identity == "toManyEmojis") {
       //TODO
       console.log(identity);
+
+      await octokit.rest.issues.createComment({
+        owner: owner,
+        repo: repo,
+        issue_number: issueNumber,
+        body: "You cannot specify multiple emojis that are there to indicate the type of issue.",
+      });
+
+      await octokit.rest.issues.update({
+        owner: owner,
+        repo: repo,
+        issue_number: issueNumber,
+        state: "closed", // Set the state to "closed"
+      });
     }
     if (identity == "l") {
       //TODO
       console.log(identity);
+
+      await octokit.rest.issues.createComment({
+        owner: owner,
+        repo: repo,
+        issue_number: issueNumber,
+        body: "Your title cannot be empty or contain none of the specified emojis.",
+      });
+
+      await octokit.rest.issues.update({
+        owner: owner,
+        repo: repo,
+        issue_number: issueNumber,
+        state: "closed", // Set the state to "closed"
+      });
     }
   } catch (error: any) {
     core.setFailed(`An error occurred (end): ${error.message}`);
