@@ -23,7 +23,7 @@ export function cleanBody(title: string, body: string) {
       }
     });
     console.log("/////////////");
-    console.log(labels.toString());
+    console.log(labels);
     console.log("/////////////");
   } else return "l";
 }
