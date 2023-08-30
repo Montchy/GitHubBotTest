@@ -1,11 +1,11 @@
 import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
-import { cleanBody } from "./bug_issue";
+import { cleanBody, labels, error } from "./bug_issue";
 import { identify } from "./checkissues";
 
 async function run() {
   try {
-    let issueComment = ` Placeholder `;
+    let issueComment = ` Everything is works `;
 
     const githubToken = process.env.TOKEN;
     if (!githubToken) {
@@ -37,21 +37,35 @@ async function run() {
     const body = issue.data.body;
     const ss = issue.data.labels.toString();
 
-    console.log("/////////////////////");
     const identity = identify(title);
-    console.log(identity + "!!!!!!");
-    console.log("/////////////////////");
     const c = cleanBody(title, body + "");
-    console.log(c + "!!!!!!!!!!!!!!!!");
 
-    await octokit.rest.issues.createComment({
-      owner: owner,
-      repo: repo,
-      issue_number: issueNumber,
-      body: issueComment,
-    });
+    if (identity == "l" || c == "l") {
+      await octokit.rest.issues.createComment({
+        owner: owner,
+        repo: repo,
+        issue_number: issueNumber,
+        body: "test test",
+      });
 
-    console.log("Comment created successfully.");
+      await octokit.rest.issues.update({
+        owner: owner,
+        repo: repo,
+        issue_number: issueNumber,
+        state: "closed", // Set the state to "closed"
+      });
+
+      console.log("Issue closed successfully.");
+    } else {
+      await octokit.rest.issues.createComment({
+        owner: owner,
+        repo: repo,
+        issue_number: issueNumber,
+        body: issueComment,
+      });
+
+      console.log("Comment created successfully.");
+    }
   } catch (error: any) {
     // Specify the type as 'any'
     core.setFailed(`An error occurred (end): ${error.message}`);

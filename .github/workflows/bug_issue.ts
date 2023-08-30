@@ -1,4 +1,5 @@
-let labels: { [key: string]: string } = {};
+export let labels: { [key: string]: string } = {};
+export let error = "";
 
 function cleanTitle(title: string) {
   if (title.startsWith("🐛")) {
@@ -27,16 +28,9 @@ export function cleanBody(title: string, body: string) {
     for (const key in labels) {
       if (labels.hasOwnProperty(key)) {
         const value = labels[key];
-        console.log("KEY:" + key);
-        console.log("CASE: VALUE = REPRODUCABLE CODE");
         cleanup(key);
       }
     }
-
-    console.log("/////////////");
-    console.log(labels);
-    console.log("/////////////");
-    console.log("test:" + labels[" Reproduceable Code"]);
   } else return "l";
 }
 
@@ -46,9 +40,6 @@ function cleanup(key: string) {
   }
   if (key == " Reproduceable Code") {
     let value = labels[key];
-    value = value + "TEST TEST";
-    console.log("in cleanup!!!!");
-    labels[key] = value;
   }
   if (key == " What happened instead?") {
     let value = labels[key];
