@@ -2,9 +2,13 @@ let labels: { [key: string]: string } = {};
 let error = "";
 
 function cleanTitle(title: string) {
-  if (title.startsWith("🐛")) {
+  if (!title.startsWith("🐛")) {
+    errorAdd("Title: Emoji has to be at the beginning of your Title");
     return "w";
-  } else return "Emoji has to be at the beginning of your Title";
+  } else if (title.length < 5) {
+    errorAdd("Title: Title is to short");
+    return "w";
+  } else return "w";
 }
 
 export function cleanBody(title: string, body: string) {
@@ -55,7 +59,6 @@ function cleanup(key: string) {
   }
   if (key == " Relevant log output") {
     let value = labels[key];
-    console.log(value.length);
     if (value != "" && value != null && value.length >= 16) {
     } else errorAdd("!Relevant log output: Empty or less than 5 letters\n");
   }
