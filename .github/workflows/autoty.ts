@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
-import { cleanBody, labels, error } from "./bug_issue";
+import { cleanBody, returnError } from "./bug_issue";
 import { identify } from "./checkissues";
 
 async function run() {
@@ -40,7 +40,7 @@ async function run() {
     const identity = identify(title);
     const c = cleanBody(title, body + "");
 
-    if (identity == "l" || c == "l") {
+    if (identity == "l") {
       await octokit.rest.issues.createComment({
         owner: owner,
         repo: repo,
@@ -70,6 +70,9 @@ async function run() {
     // Specify the type as 'any'
     core.setFailed(`An error occurred (end): ${error.message}`);
   }
+
+  console.log("/////////////");
+  console.log(returnError());
 }
 
 run();

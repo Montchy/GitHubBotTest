@@ -1,10 +1,10 @@
-export let labels: { [key: string]: string } = {};
-export let error = "";
+let labels: { [key: string]: string } = {};
+let error = "";
 
 function cleanTitle(title: string) {
   if (title.startsWith("🐛")) {
     return "w";
-  } else return "l";
+  } else return "Emoji has to be at the beginning of your Title";
 }
 
 export function cleanBody(title: string, body: string) {
@@ -37,21 +37,51 @@ export function cleanBody(title: string, body: string) {
 function cleanup(key: string) {
   if (key == " What were you trying to do?") {
     let value = labels[key];
+    if (value != "" && value != null && value.length >= 5) {
+    } else
+      errorAdd("!What were you trying to do: Empty or less than 5 letters");
   }
   if (key == " Reproduceable Code") {
     let value = labels[key];
+    if (value != "" && value != null && value.length >= 5) {
+    } else errorAdd("!Reproducable Code: Empty or less than 5 letters");
   }
   if (key == " What happened instead?") {
     let value = labels[key];
+    if (value != "" && value != null && value.length >= 5) {
+    } else errorAdd("!What happened instead: Empty or less than 5 letters");
   }
   if (key == " Relevant log output") {
     let value = labels[key];
+    if (value != "" && value != null && value.length >= 5) {
+    } else errorAdd("!Relevant log output: Empty or less than 5 letters");
   }
   if (key == " Device") {
     let value = labels[key];
+    if (value != "" && value != null && value.length >= 5) {
+    } else errorAdd("!Device: Empty or less than 5 letters");
   }
   if (key == " VisionCamera Version") {
     let value = labels[key];
+    if (isSemVer(value)) {
+      return null;
+    } else errorAdd("!VisionCamera Version: Isn't SemVer!");
   }
-  return "l";
+  return "Fatal error";
+}
+
+function isSemVer(version: string): boolean {
+  const semVerPattern = /^\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?(\+[a-zA-Z0-9.-]+)?$/;
+  return semVerPattern.test(version);
+}
+
+function errorAdd(value) {
+  if (error == "") {
+    error = "Errors: \n" + value;
+  }
+  error = error + value + "\n";
+}
+
+export function returnError() {
+  return error;
 }
