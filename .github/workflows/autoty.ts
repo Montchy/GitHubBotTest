@@ -31,18 +31,25 @@ async function run() {
 
     const [owner, repo] = repository.split("/"); // Split owner and repo
 
-    console.log(owner);
-    console.log(repo);
-    console.log(issueNumber);
-    console.log(issueComment);
-
     await octokit.rest.issues.createComment({
       owner: owner,
       repo: repo,
       issue_number: issueNumber,
       body: issueComment,
     });
-    console.log("5");
+
+    const issue = await octokit.rest.issues.get({
+      owner: owner,
+      repo: repo,
+      issue_number: issueNumber,
+    });
+
+    const title = issue.data.title;
+    const body = issue.data.body;
+
+    console.log("Title: " + title);
+    console.log("Body: " + body);
+
     console.log("Comment created successfully.");
   } catch (error: any) {
     // Specify the type as 'any'
