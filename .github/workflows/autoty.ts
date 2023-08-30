@@ -97,6 +97,7 @@ async function run() {
     if (identity == "l") {
       //TODO
       console.log(identity);
+      console.log("INSIDE L");
 
       await octokit.rest.issues.createComment({
         owner: owner,
