@@ -40,33 +40,33 @@ function cleanup(key: string) {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
     } else
-      errorAdd("!What were you trying to do: Empty or less than 5 letters");
+      errorAdd("!What were you trying to do: Empty or less than 5 letters\n");
   }
   if (key == " Reproduceable Code") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else errorAdd("!Reproducable Code: Empty or less than 5 letters");
+    } else errorAdd("!Reproducable Code: Empty or less than 5 letters\n");
   }
   if (key == " What happened instead?") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else errorAdd("!What happened instead: Empty or less than 5 letters");
+    } else errorAdd("!What happened instead: Empty or less than 5 letters\n");
   }
   if (key == " Relevant log output") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else errorAdd("!Relevant log output: Empty or less than 5 letters");
+    } else errorAdd("!Relevant log output: Empty or less than 5 letters\n");
   }
   if (key == " Device") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else errorAdd("!Device: Empty or less than 5 letters");
+    } else errorAdd("!Device: Empty or less than 5 letters\n");
   }
   if (key == " VisionCamera Version") {
     let value = labels[key];
     if (isSemVer(value)) {
       return null;
-    } else errorAdd("!VisionCamera Version: Isn't SemVer!");
+    } else errorAdd("!VisionCamera Version: Isn't SemVer!\n");
   }
   return "Fatal error";
 }
@@ -78,9 +78,9 @@ function isSemVer(version: string): boolean {
 
 function errorAdd(value: string) {
   if (error == "") {
-    error = "Errors: \n" + value;
+    error = "Errors: \n" + value + "\n";
   }
-  error = error + value + "\n";
+  error = error + value;
 }
 
 export function returnError() {
