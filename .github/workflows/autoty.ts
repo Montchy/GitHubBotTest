@@ -1,8 +1,9 @@
 import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
-
+console.log("1");
 async function run() {
   try {
+    console.log("1");
     const issueComment = `
     Thank you for creating this issue! We appreciate your feedback. 👍
 
@@ -22,7 +23,7 @@ async function run() {
     if (!repository) {
       throw new Error("Repository information not available.");
     }
-
+    console.log("1");
     const [owner, repo] = repository.split("/"); // Split owner and repo
 
     await octokit.rest.issues.createComment({
