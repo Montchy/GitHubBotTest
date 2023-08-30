@@ -29,7 +29,7 @@ export function cleanBody(title: string, body: string) {
   } else return "l";
 }
 
-function cleanup(key) {
+function cleanup(key: string) {
   if (key == " What were you trying to do?") {
     let value = labels[key];
   }
