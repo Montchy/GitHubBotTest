@@ -40,7 +40,6 @@ async function run() {
       issue_number: issueNumber,
       body: issueComment,
     });
-
     console.log("5");
     console.log("Comment created successfully.");
   } catch (error: any) {

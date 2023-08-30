@@ -8,11 +8,11 @@ jobs:
   to-the-steps:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
     steps:
       - name: check me
-        run: echo "TOKEN -> $GITHUB_TOKEN"
+        run: echo "TOKEN -> $TOKEN"
 
       - name: Check out code
         uses: actions/checkout@v2
