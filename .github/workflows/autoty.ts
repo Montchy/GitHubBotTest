@@ -33,7 +33,8 @@ async function run() {
     });
 
     console.log("Comment created successfully.");
-  } catch (error) {
+  } catch (error: any) {
+    // Specify the type as 'any'
     core.setFailed(`An error occurred: ${error.message}`);
   }
 }
