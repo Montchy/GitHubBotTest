@@ -2,7 +2,7 @@ import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 
 async function run() {
-  console.log(process.env.GITHUB_TOKEN);
+  console.log(process.env.TOKEN);
 
   try {
     const issueComment = `
@@ -11,7 +11,7 @@ async function run() {
     If you have any questions or need further assistance, feel free to ask.
     `;
 
-    const githubToken = process.env.GITHUB_TOKEN;
+    const githubToken = process.env.TOKEN;
     if (!githubToken) {
       throw new Error("GitHub token not available.");
     }
