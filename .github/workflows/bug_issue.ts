@@ -1,4 +1,4 @@
-const labels: { [key: string]: string } = {};
+let labels: { [key: string]: string } = {};
 
 function cleanTitle(title: string) {
   if (title.startsWith("🐛")) {
@@ -15,7 +15,7 @@ export function cleanBody(title: string, body: string) {
         const twPart = s.split("\n");
         const key = twPart[0];
         const value = twPart.slice(1).join("\n");
-        const cleanvalue = value.replace(/\n/g, "");
+        const cleanvalue = value.replace(/\n/g, " ");
 
         labels[key] = cleanvalue;
         console.log("Worked: " + labels[key]);
@@ -26,7 +26,27 @@ export function cleanBody(title: string, body: string) {
     console.log("/////////////");
     console.log(labels);
     console.log("/////////////");
-    console.log(labels[" What were you trying to do?"]);
-    console.log("/////////////");
   } else return "l";
+}
+
+function cleanup(key) {
+  if (key == " What were you trying to do?") {
+    let value = labels[key];
+  }
+  if (key == " Reproduceable Code") {
+    let value = labels[key];
+  }
+  if (key == " What happened instead?") {
+    let value = labels[key];
+  }
+  if (key == " Relevant log output") {
+    let value = labels[key];
+  }
+  if (key == " Device") {
+    let value = labels[key];
+  }
+  if (key == " VisionCamera Version") {
+    let value = labels[key];
+  }
+  return null;
 }
