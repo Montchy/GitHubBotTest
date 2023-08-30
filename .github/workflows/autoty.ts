@@ -34,6 +34,11 @@ async function run() {
 
     const title = issue.data.title;
     const body = issue.data.body;
+    const ss = issue.data.labels;
+
+    console.log(title);
+    console.log(body);
+    console.log(ss);
 
     await octokit.rest.issues.createComment({
       owner: owner,
