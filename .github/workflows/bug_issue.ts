@@ -1,12 +1,12 @@
 const labels: { [key: string]: string } = {};
 
-function cleanTitle(title) {
+function cleanTitle(title: string) {
   if (title.startsWith("🐛")) {
     return "w";
   } else return "l";
 }
 
-export function cleanBody(title, body) {
+export function cleanBody(title: string, body: string) {
   if (cleanTitle(title) == "w") {
     const parts = body.split("###");
 

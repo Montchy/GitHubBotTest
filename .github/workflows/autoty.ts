@@ -37,7 +37,7 @@ async function run() {
     const body = issue.data.body;
     const ss = issue.data.labels.toString();
 
-    cleanBody(title, body);
+    cleanBody(title, body + "");
 
     console.log(title);
     console.log("////////////////////");
