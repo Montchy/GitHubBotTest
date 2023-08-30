@@ -36,7 +36,8 @@ async function run() {
     const body = issue.data.body;
     const ss = issue.data.labels.toString();
 
-    cleanBody(title, body + "");
+    const c = cleanBody(title, body + "");
+    console.log(c + "!!!!!!!!!!!!!!!!");
 
     await octokit.rest.issues.createComment({
       owner: owner,
