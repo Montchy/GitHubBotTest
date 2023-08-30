@@ -37,7 +37,9 @@ async function run() {
     const ss = issue.data.labels;
 
     console.log(title);
+    console.log("////////////////////");
     console.log(body);
+    console.log("////////////////////");
     console.log(ss);
 
     await octokit.rest.issues.createComment({
