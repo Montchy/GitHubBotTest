@@ -64,6 +64,7 @@ function cleanup(key: string) {
   }
   if (key == " VisionCamera Version") {
     let value = labels[key];
+    console.log(value + "SHOUD BE SEMVER!!!!");
     if (isSemVer(value) == true) {
       return null;
     } else errorAdd("!VisionCamera Version: Isn't SemVer!\n");
