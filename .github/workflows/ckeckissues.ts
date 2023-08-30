@@ -1,5 +1,3 @@
-console.log("Script got started");
-
 function identify(s: string) {
   if (("" + s).startsWith("🐛")) {
     return "bug";
@@ -14,7 +12,7 @@ function identify(s: string) {
   }
 }
 
-function checkUnsure(s: string) {
+function checkUnsure(s) {
   if (s == "unsure") {
     //Title was wrong, close / delete after
     return "Something with you title seems to be wrong, check if the right emoji is at the beginning of your title";
@@ -22,20 +20,20 @@ function checkUnsure(s: string) {
   console.log("Check:" + s);
 }
 
-function checkQuestion(s: string) {
+function checkQuestion(s) {
   if (s == "question") {
     //TODO: check for valid information
   }
 }
 
-function checkBug(s: string) {
+function checkBug(s) {
   if (s == "bug") {
     //TODO: check for valid information
   }
   console.log("Check:" + s);
 }
 
-function checkFeature(s: string) {
+function checkFeature(s) {
   if (s == "bug") {
     //TODO: check for valid information
   }

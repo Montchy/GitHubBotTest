@@ -11,14 +11,15 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          python-version: "3.x" # Set the appropriate Python version
+          node-version: "14" # Set the appropriate Node.js version
 
-      - name: Run Typescript
-        run: python .github/workflows/autoty.ts
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run TypeScript script
+        run: npx ts-node .github/workflows/autoty.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_EVENT_PATH: ${{ github.event_path }}
