@@ -40,12 +40,12 @@ async function run() {
     const identity = identify(title);
     const c = cleanBody(title, body + "");
 
-    if (identity == "l") {
+    if (returnError() != "") {
       await octokit.rest.issues.createComment({
         owner: owner,
         repo: repo,
         issue_number: issueNumber,
-        body: "test test",
+        body: returnError(),
       });
 
       await octokit.rest.issues.update({
@@ -67,7 +67,6 @@ async function run() {
       console.log("Comment created successfully.");
     }
   } catch (error: any) {
-    // Specify the type as 'any'
     core.setFailed(`An error occurred (end): ${error.message}`);
   }
 
