@@ -3,13 +3,8 @@ import { context, getOctokit } from "@actions/github";
 
 async function run() {
   console.log(process.env.TOKEN);
-
   try {
-    const issueComment = `
-    Thank you for creating this issue! We appreciate your feedback. 👍
-
-    If you have any questions or need further assistance, feel free to ask.
-    `;
+    let issueComment = ` Placeholder `;
 
     const githubToken = process.env.TOKEN;
     if (!githubToken) {
@@ -18,7 +13,7 @@ async function run() {
 
     const octokit = getOctokit(githubToken);
 
-    const issueNumber = context.payload.issue?.number; // Add "?" for optional chaining
+    const issueNumber = context.payload.issue?.number;
     const repository = process.env.GITHUB_REPOSITORY;
 
     if (!issueNumber) {
@@ -29,7 +24,7 @@ async function run() {
       throw new Error("Repository information not available.");
     }
 
-    const [owner, repo] = repository.split("/"); // Split owner and repo
+    const [owner, repo] = repository.split("/");
 
     const issue = await octokit.rest.issues.get({
       owner: owner,
@@ -40,18 +35,14 @@ async function run() {
     const title = issue.data.title;
     const body = issue.data.body;
 
-    console.log(identify(title));
+    await octokit.rest.issues.createComment({
+      owner: owner,
+      repo: repo,
+      issue_number: issueNumber,
+      body: issueComment,
+    });
 
-    if (identify(title) != "unsure") {
-      await octokit.rest.issues.createComment({
-        owner: owner,
-        repo: repo,
-        issue_number: issueNumber,
-        body: issueComment,
-      });
-
-      console.log("Comment created successfully.");
-    }
+    console.log("Comment created successfully.");
   } catch (error: any) {
     // Specify the type as 'any'
     core.setFailed(`An error occurred (end): ${error.message}`);
