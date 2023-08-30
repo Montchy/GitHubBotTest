@@ -88,9 +88,10 @@ function isSemVer(input: string) {
 
 function errorAdd(value: string) {
   if (error == "") {
-    error = "Errors: \n" + value + "\n";
+    error = "Errors: \n" + value;
+  } else {
+    error = error + value;
   }
-  error = error + value;
 }
 
 export function returnError() {
