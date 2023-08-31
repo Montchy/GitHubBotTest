@@ -5,6 +5,7 @@ import {
   errorTitle,
   returnErrorTitle,
 } from "../UTILS/checkissues";
+import { toShort } from "../UTILS/consts";
 
 let error = "";
 let tierror = "";
@@ -23,12 +24,12 @@ export function cleanBodyQuestion(title: string, body: string) {
 function cleanup(key: string) {
   if (key == " Question") {
     let value = labels[key];
-    if (value != "" && value != null && value.length >= 5) {
+    if (value != "" && value != null && value.length >= toShort) {
     } else errorAdd("!Question:  Not enough information\n");
   }
   if (key == " What I tried") {
     let value = labels[key];
-    if (value != "" && value != null && value.length >= 5) {
+    if (value != "" && value != null && value.length >= toShort) {
     } else errorAdd("!What I tried:  Not enough information\n");
   }
   if (key == " VisionCamera Version") {

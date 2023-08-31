@@ -1,4 +1,5 @@
 import { cleanBody, labels } from "../UTILS/checkissues";
+import { toShort } from "../UTILS/consts";
 
 let error = "";
 let tierror = "";
@@ -20,7 +21,7 @@ function cleanup(key: string) {
   if (key == " What feature or enhancement are you suggesting?") {
     let value = labels[key];
     console.log(value.length);
-    if (value != "" && value != null && value.length >= 5) {
+    if (value != "" && value != null && value.length >= toShort) {
     } else
       errorAdd(
         "!What feature or enhancement are you suggesting?:  Not enough information\n"
@@ -37,7 +38,7 @@ function cleanup(key: string) {
   if (key == " Alternatives/Workarounds") {
     let value = labels[key];
     console.log(value.length);
-    if (value != "" && value != null && value.length >= 5) {
+    if (value != "" && value != null && value.length >= toShort) {
     } else errorAdd(" _!_ Alternatives/Workarounds:  Not enough information\n");
   }
 }
