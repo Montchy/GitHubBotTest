@@ -96,6 +96,6 @@ function errorAdd(value: string) {
   }
 }
 
-export function returnError() {
+export function returnErrorBug() {
   return error;
 }

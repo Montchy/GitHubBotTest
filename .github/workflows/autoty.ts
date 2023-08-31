@@ -1,7 +1,8 @@
 import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
-import { cleanBody, returnError } from "./bug_issue";
+import { cleanBody, returnErrorBug } from "./bug_issue";
 import { identify } from "./checkissues";
+import { returnErrorFeature } from "./feature_issue";
 
 async function run() {
   try {
@@ -41,12 +42,12 @@ async function run() {
     const c = cleanBody(title, body + "");
 
     if (identity == "bug") {
-      if (returnError() != "") {
+      if (returnErrorBug() != "") {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: returnError(),
+          body: returnErrorBug(),
         });
 
         await octokit.rest.issues.update({
@@ -71,15 +72,37 @@ async function run() {
     if (identity == "feature") {
       //TODO
       console.log(identity);
+
+      if (returnErrorFeature() != "") {
+        await octokit.rest.issues.createComment({
+          owner: owner,
+          repo: repo,
+          issue_number: issueNumber,
+          body: returnErrorFeature(),
+        });
+
+        await octokit.rest.issues.update({
+          owner: owner,
+          repo: repo,
+          issue_number: issueNumber,
+          state: "closed", // Set the state to "closed"
+        });
+      } else {
+        await octokit.rest.issues.createComment({
+          owner: owner,
+          repo: repo,
+          issue_number: issueNumber,
+          body: issueComment,
+        });
+
+        console.log("Comment created successfully.");
+      }
     }
     if (identity == "question") {
       //TODO
       console.log(identity);
     }
     if (identity == "toManyEmojis") {
-      //TODO
-      console.log(identity);
-
       await octokit.rest.issues.createComment({
         owner: owner,
         repo: repo,
@@ -95,10 +118,6 @@ async function run() {
       });
     }
     if (identity == "l") {
-      //TODO
-      console.log(identity);
-      console.log("INSIDE L");
-
       await octokit.rest.issues.createComment({
         owner: owner,
         repo: repo,
