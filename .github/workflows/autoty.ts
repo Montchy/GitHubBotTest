@@ -86,7 +86,7 @@ async function run() {
     /////////////////////##################################
     if (identity == "feature") {
       cleanBodyFeature(title, body + "");
-      console.log(returnErrorFeature());
+      console.log("RETURN ERROR: " + returnErrorFeature());
 
       if (
         containsLetters(returnErrorFeature()) &&
