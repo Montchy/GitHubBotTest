@@ -7,7 +7,7 @@ let error = "";
 export function cleanBodyBug(title: string, body: string) {
   cleanBody(title, body, "🐛", error);
   console.log("Errortitle: " + errorTitle);
-
+  //test
   errorAddTitle(errorTitle, error);
 
   for (const key in labels) {
