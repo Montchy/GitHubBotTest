@@ -135,7 +135,7 @@ async function run() {
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          state: "closed", // Set the state to "closed"
+          state: "closed",
         });
       } else {
         await octokit.rest.issues.createComment({
