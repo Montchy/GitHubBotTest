@@ -33,7 +33,9 @@ export function cleanBody(title: string, body: string) {
         cleanup(key);
       }
     }
-    console.log(labels);
+    for (const key in labels) {
+      console.log(key + " / " + labels[key]);
+    }
   } else return "l";
 }
 
