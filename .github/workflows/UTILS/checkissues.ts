@@ -1,4 +1,3 @@
-import { containsLetters } from "./helpingMethods";
 export let labels: { [key: string]: string } = {};
 export let errorTitle = "";
 
