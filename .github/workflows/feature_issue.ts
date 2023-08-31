@@ -26,7 +26,7 @@ export function cleanBody(title: string, body: string) {
         labels[key] = cleanvalue;
       } catch (error) {}
     });
-
+    console.log("OOAIJAIBEGIOAEI");
     for (const key in labels) {
       if (labels.hasOwnProperty(key)) {
         const value = labels[key];
