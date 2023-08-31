@@ -15,8 +15,6 @@ import {
 
 async function run() {
   try {
-    let issueComment = `**Thank you** for reporting this issue!`;
-
     const githubToken = process.env.TOKEN;
     if (!githubToken) {
       throw new Error("GitHub token not available.");
@@ -76,7 +74,7 @@ async function run() {
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: issueComment,
+          body: "**Thank you** for reporting this Bug! ",
         });
 
         console.log("Comment created successfully.");
@@ -112,7 +110,7 @@ async function run() {
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: issueComment,
+          body: "**Thank you* for sending in this feature request!",
         });
 
         console.log("Comment created successfully.");
@@ -144,7 +142,7 @@ async function run() {
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: issueComment,
+          body: "Someone will answer you as soon as possible!",
         });
 
         console.log("Comment created successfully.");
