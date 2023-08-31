@@ -1,7 +1,6 @@
 import { containsLetters } from "./helpingMethods";
 export let labels: { [key: string]: string } = {};
 export let errorTitle = "";
-
 export function identify(title: string) {
   if (
     (title.includes("🐛") && title.includes("✨")) ||
@@ -27,10 +26,10 @@ function cleanTitle(title: string, emoji: string) {
   let emr = "";
   if (title.includes("emoji") && title.indexOf("emoji") > 0) {
     // localerrorAdd("!Title: Emoji has to be at the beginning of your Title \n");
-    emr += "!Title: Emoji has to be at the beginning of your Title \n";
+    emr += "_!_Title: Emoji has to be at the beginning of your Title \n";
   } else if (title.length < 5) {
     //   localerrorAdd("!Title: Title is to short \n");
-    emr += "!Title: Title is to short \n";
+    emr += "_!_Title: Title is to short \n";
   }
   return emr;
 }
@@ -65,7 +64,7 @@ export function cleanBody(
 function localerrorAdd(value: string) {
   if (errorTitle.length == 0) {
     console.log("localerroradd if 1");
-    errorTitle == "Errors in the Title: \n" + value;
+    errorTitle == "**Errors in the Title:** \n" + value;
   } else {
     errorTitle = errorTitle + value;
     console.log("localerroradd if 2");
