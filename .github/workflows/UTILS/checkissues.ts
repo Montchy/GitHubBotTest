@@ -65,7 +65,7 @@ export function cleanBody(
 }
 
 function localerrorAdd(value: string) {
-  if (containsLetters(value)) {
+  if (value == null || value == "") {
     errorTitle == "Erros in the Title: \n" + value + "\n" + "\n";
   } else {
     errorTitle = errorTitle + value;
