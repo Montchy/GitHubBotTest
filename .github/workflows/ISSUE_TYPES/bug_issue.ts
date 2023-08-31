@@ -1,8 +1,6 @@
 import { isSemVer } from "../UTILS/helpingMethods";
 import { cleanBody, labels, errorAdd } from "../UTILS/checkissues";
 
-error;
-
 export function cleanBodyBug(title: string, body: string) {
   cleanBody(title, body, "🐛");
 
