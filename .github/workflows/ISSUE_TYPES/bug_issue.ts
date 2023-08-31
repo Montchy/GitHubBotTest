@@ -40,7 +40,7 @@ function cleanup(key: string) {
   }
   if (key == " Device") {
     let value = labels[key];
-    if (value != "" && value != null && value.length >= toShort) {
+    if (value != "" && value != null && value.length >= 5) {
     } else errorAdd("!Device:  Not enough information\n");
   }
   if (key == " VisionCamera Version") {
