@@ -1,15 +1,9 @@
 import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
-import { returnError } from "./UTILS/checkissues";
 import { identify } from "./UTILS/checkissues";
-import {
-  cleanBodyFeature,
-  returnErrorFeature,
-} from "./ISSUE_TYPES/feature_issue";
-import {
-  cleanBodyQuestion,
-  returnErrorQuestion,
-} from "./ISSUE_TYPES/question_issue";
+import { returnErrorBug } from "./ISSUE_TYPES/bug_issue";
+import { returnErrorFeature } from "./ISSUE_TYPES/feature_issue";
+import { returnErrorQuestion } from "./ISSUE_TYPES/question_issue";
 
 async function run() {
   try {
@@ -48,12 +42,12 @@ async function run() {
     const identity = identify(title);
 
     if (identity == "bug") {
-      if (returnError() != "") {
+      if (returnErrorBug() != "") {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: returnError(),
+          body: returnErrorBug(),
         });
 
         await octokit.rest.issues.update({
