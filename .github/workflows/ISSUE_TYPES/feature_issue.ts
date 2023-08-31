@@ -50,14 +50,11 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorFeature() {
-  console.log("//////");
-  console.log(tierror + "");
-  console.log(error + "");
-  console.log("//////");
-  if (tierror + "\n" + error != undefined) {
+  if (tierror != undefined && error != undefined) {
     return tierror + "\n" + error;
-  } else {
-    console.log("undefined error");
-    return "";
-  }
+  } else if (tierror == undefined) {
+    return error;
+  } else if (error == undefined) {
+    return tierror;
+  } else return "";
 }
