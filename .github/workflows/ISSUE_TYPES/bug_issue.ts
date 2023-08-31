@@ -63,5 +63,5 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorBug() {
-  return errorTitle + error;
+  return errorTitle + "\n" + error;
 }
