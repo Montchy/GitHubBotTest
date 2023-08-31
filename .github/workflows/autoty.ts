@@ -1,4 +1,5 @@
 import * as core from "@actions/core";
+import { containsLetters } from "./UTILS/helpingMethods";
 import { context, getOctokit } from "@actions/github";
 import { identify } from "./UTILS/checkissues";
 import { returnErrorBug, cleanBodyBug } from "./ISSUE_TYPES/bug_issue";
@@ -49,7 +50,7 @@ async function run() {
 
     if (identity == "bug") {
       cleanBodyBug(title, body + "");
-      if (returnErrorBug() != "") {
+      if (containsLetters(returnErrorFeature())) {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
@@ -82,7 +83,7 @@ async function run() {
       cleanBodyFeature(title, body + "");
       console.log(identity);
 
-      if (returnErrorFeature() != "") {
+      if (containsLetters(returnErrorFeature())) {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
@@ -112,7 +113,7 @@ async function run() {
     if (identity == "question") {
       cleanBodyQuestion(title, body + "");
 
-      if (returnErrorQuestion() != "") {
+      if (containsLetters(returnErrorFeature())) {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
