@@ -4,7 +4,7 @@ import { cleanBody, labels } from "../UTILS/checkissues";
 let error = "";
 
 export function cleanBodyBug(title: string, body: string) {
-  cleanBody(title, body, "🐛");
+  cleanBody(title, body, "🐛", error);
 
   for (const key in labels) {
     if (labels.hasOwnProperty(key)) {
@@ -63,6 +63,6 @@ export function errorAdd(value: string) {
   console.log(error);
 }
 
-export function returnError() {
+export function returnErrorBug() {
   return error;
 }

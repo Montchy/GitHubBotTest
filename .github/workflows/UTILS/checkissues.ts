@@ -1,5 +1,4 @@
 export let labels: { [key: string]: string } = {};
-export let error = "";
 
 export function identify(title: string) {
   console.log("Identifier is running...");
@@ -26,18 +25,26 @@ export function identify(title: string) {
   }
 }
 
-function cleanTitle(title: string, emoji: string) {
+function cleanTitle(title: string, emoji: string, error: string) {
   if (title.includes("emoji") && title.indexOf("emoji") > 0) {
-    errorAdd("!Title: Emoji has to be at the beginning of your Title \n");
+    errorAdd(
+      "!Title: Emoji has to be at the beginning of your Title \n",
+      error
+    );
     return "w";
   } else if (title.length < 5) {
-    errorAdd("!Title: Title is to short \n");
+    errorAdd("!Title: Title is to short \n", error);
     return "w";
   } else return "w";
 }
 
-export function cleanBody(title: string, body: string, emoji: string) {
-  if (cleanTitle(title, emoji) == "w") {
+export function cleanBody(
+  title: string,
+  body: string,
+  emoji: string,
+  error: string
+) {
+  if (cleanTitle(title, emoji, error) == "w") {
     const parts = body.split("###");
 
     parts.forEach((s) => {
@@ -54,7 +61,7 @@ export function cleanBody(title: string, body: string, emoji: string) {
   }
 }
 
-export function errorAdd(value: string) {
+export function errorAdd(value: string, error: string) {
   if (error == "") {
     error = "Errors: \n" + value;
   } else {
@@ -62,8 +69,4 @@ export function errorAdd(value: string) {
   }
 
   console.log(error);
-}
-
-export function returnError() {
-  return error;
 }
