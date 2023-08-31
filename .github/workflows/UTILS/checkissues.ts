@@ -1,3 +1,4 @@
+import { containsLetters } from "./helpingMethods";
 export let labels: { [key: string]: string } = {};
 export let errorTitle = "";
 
@@ -41,7 +42,6 @@ export function cleanBody(
   error: string
 ) {
   const cT = cleanTitle(title, emoji);
-  console.log("EMR=" + cT);
 
   const parts = body.split("###");
 
@@ -56,6 +56,10 @@ export function cleanBody(
       labels[key] = cleanvalue;
     } catch (error) {}
   });
+
+  if (containsLetters(cT)) {
+    return "Errors in the Title:  \n" + cT;
+  }
 }
 
 function localerrorAdd(value: string) {

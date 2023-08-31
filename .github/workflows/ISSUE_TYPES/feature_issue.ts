@@ -9,8 +9,7 @@ let error = "";
 let tierror = "";
 
 export function cleanBodyFeature(title: string, body: string) {
-  cleanBody(title, body, "✨", error);
-
+  tierror = "" + cleanBody(title, body, "✨", error);
   for (const key in labels) {
     if (labels.hasOwnProperty(key)) {
       const value = labels[key];
@@ -53,7 +52,6 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorFeature() {
-  console.log("Return error title" + returnErrorTitle());
-  console.log("Error title :" + errorTitle);
-  return returnErrorTitle() + "\n" + error;
+  console.log("Error title :" + tierror);
+  return tierror + "\n" + error;
 }
