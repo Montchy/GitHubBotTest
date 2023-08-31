@@ -1,21 +1,19 @@
-import {
-  cleanBody,
-  errorTitle,
-  labels,
-  returnErrorTitle,
-} from "../UTILS/checkissues";
+import { cleanBody, labels } from "../UTILS/checkissues";
 
 let error = "";
 let tierror = "";
 
 export function cleanBodyFeature(title: string, body: string) {
   tierror = "" + cleanBody(title, body, "✨", error);
+
   for (const key in labels) {
     if (labels.hasOwnProperty(key)) {
       const value = labels[key];
       cleanup(key);
     }
   }
+
+  console.log("Error(Feature):" + error);
 }
 
 function cleanup(key: string) {
