@@ -20,8 +20,11 @@ export function errorAdd(value: string, error: string) {
 }
 
 export function errorAddTitle(value: string, error: string) {
+  console.log("cleantitel wurde gleaufen");
   if (value != null || value != "") {
     error == "Erros in the Title: \n" + value + "\n" + "\n";
     console.log("IN ERROR ADD TITLE");
-  } else console.log("no title errors found");
+  } else {
+    error = error + value;
+  }
 }
