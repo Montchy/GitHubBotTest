@@ -45,7 +45,7 @@ export function cleanBody(
   error: string
 ) {
   const cT = cleanTitle(title, emoji, error);
-  console.log(errorTitle);
+  console.log("IN CHEKISSUES: " + errorTitle);
   if (cT == "w") {
     const parts = body.split("###");
 
@@ -64,7 +64,7 @@ export function cleanBody(
 }
 
 function localerrorAdd(value: string) {
-  if (value != null || value != "") {
+  if (value == null || value == "") {
     errorTitle == "Erros in the Title: \n" + value + "\n" + "\n";
     console.log("IN ERROR ADD TITLE");
   } else {
