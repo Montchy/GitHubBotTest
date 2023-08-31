@@ -1,3 +1,5 @@
+import { isSemVer } from "../UTILS/checkissues";
+
 let labels: { [key: string]: string } = {};
 let error = "";
 
@@ -40,7 +42,27 @@ export function cleanBodyQuestion(title: string, body: string) {
   } else return "l";
 }
 
-function cleanup(key: string) {}
+function cleanup(key: string) {
+  if (key == " Question") {
+    let value = labels[key];
+    if (value != "" && value != null && value.length >= 5) {
+    } else errorAdd("!Question: Empty or less than 5 letters\n");
+  }
+  if (key == " What I tried") {
+    let value = labels[key];
+    if (value != "" && value != null && value.length >= 5) {
+    } else errorAdd("!What I tried: Empty or less than 5 letters\n");
+  }
+  if (key == " VisionCamera Version") {
+    let value = labels[key];
+    const cleanvalue = value.replace(" ", "");
+
+    if (isSemVer(cleanvalue) == true) {
+      return null;
+    } else errorAdd("!VisionCamera Version: Isn't SemVer!\n");
+  }
+  return "Fatal error";
+}
 
 function errorAdd(value: string) {
   if (error == "") {
