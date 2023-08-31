@@ -45,6 +45,7 @@ export function cleanBody(
   error: string
 ) {
   const cT = cleanTitle(title, emoji, error);
+
   if (cT == "w") {
     const parts = body.split("###");
 
