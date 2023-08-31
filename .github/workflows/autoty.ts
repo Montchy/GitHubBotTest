@@ -6,7 +6,10 @@ import {
   cleanBodyFeature,
   returnErrorFeature,
 } from "./ISSUE_TYPES/feature_issue";
-import { cleanBodyQuestion } from "./ISSUE_TYPES/question_issue";
+import {
+  cleanBodyQuestion,
+  returnErrorQuestion,
+} from "./ISSUE_TYPES/question_issue";
 
 async function run() {
   try {
@@ -104,7 +107,31 @@ async function run() {
     }
     if (identity == "question") {
       //TODO
-      console.log(identity);
+
+      if (returnErrorQuestion() != "") {
+        await octokit.rest.issues.createComment({
+          owner: owner,
+          repo: repo,
+          issue_number: issueNumber,
+          body: returnErrorQuestion(),
+        });
+
+        await octokit.rest.issues.update({
+          owner: owner,
+          repo: repo,
+          issue_number: issueNumber,
+          state: "closed", // Set the state to "closed"
+        });
+      } else {
+        await octokit.rest.issues.createComment({
+          owner: owner,
+          repo: repo,
+          issue_number: issueNumber,
+          body: issueComment,
+        });
+
+        console.log("Comment created successfully.");
+      }
     }
     if (identity == "toManyEmojis") {
       await octokit.rest.issues.createComment({
