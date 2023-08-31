@@ -1,4 +1,4 @@
-import { isSemVer } from "../UTILS/checkissues";
+import { isSemVer } from "../UTILS/helpingMethods";
 
 let labels: { [key: string]: string } = {};
 let error = "";

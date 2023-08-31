@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
-import { cleanBodyBug, returnErrorBug } from "./ISSUE_TYPES/bug_issue";
+import { returnError } from "./UTILS/checkissues";
 import { identify } from "./UTILS/checkissues";
 import {
   cleanBodyFeature,
@@ -46,15 +46,14 @@ async function run() {
     const ss = issue.data.labels.toString();
 
     const identity = identify(title);
-    const cleanBody = cleanBodyQuestion(title, body + "");
 
     if (identity == "bug") {
-      if (returnErrorBug() != "") {
+      if (returnError() != "") {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: returnErrorBug(),
+          body: returnError(),
         });
 
         await octokit.rest.issues.update({
