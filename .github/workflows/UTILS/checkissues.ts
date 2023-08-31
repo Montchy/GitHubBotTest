@@ -44,7 +44,8 @@ export function cleanBody(
   emoji: string,
   error: string
 ) {
-  if (cleanTitle(title, emoji, error) == "w") {
+  const cT = cleanTitle(title, emoji, error);
+  if (cT == "w") {
     const parts = body.split("###");
 
     parts.forEach((s) => {
@@ -67,6 +68,4 @@ export function errorAdd(value: string, error: string) {
   } else {
     error = error + value;
   }
-
-  console.log(error);
 }

@@ -54,7 +54,7 @@ function cleanup(key: string) {
   return "Fatal error";
 }
 
-export function errorAdd(value: string) {
+function errorAdd(value: string) {
   if (error == "") {
     error = "Errors: \n" + value;
   } else {
