@@ -15,7 +15,7 @@ import {
 
 async function run() {
   try {
-    let issueComment = ` **Everything seems to be working :)** `;
+    let issueComment = `**Thank you** for reporting this issue!`;
 
     const githubToken = process.env.TOKEN;
     if (!githubToken) {
