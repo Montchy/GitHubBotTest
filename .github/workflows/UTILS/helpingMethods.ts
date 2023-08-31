@@ -10,3 +10,17 @@ export function isSemVer(input: string) {
     }
   } else return false;
 }
+
+export function errorAdd(value: string, error: string) {
+  if (error == "") {
+    error = "Errors in the Body: \n" + value;
+  } else {
+    error = error + value;
+  }
+}
+
+export function errorAddTitle(value: string, error: string) {
+  if (value != null || value != "") {
+    error == "Erros in the Title: \n" + value + "\n" + "\n";
+  } else console.log("not title errors found");
+}
