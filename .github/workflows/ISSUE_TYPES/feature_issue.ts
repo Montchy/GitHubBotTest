@@ -1,4 +1,9 @@
-import { cleanBody, labels, returnErrorTitle } from "../UTILS/checkissues";
+import {
+  cleanBody,
+  errorTitle,
+  labels,
+  returnErrorTitle,
+} from "../UTILS/checkissues";
 
 let error = "";
 
@@ -47,6 +52,7 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorFeature() {
-  console.log(returnErrorTitle());
+  console.log("Return error title" + returnErrorTitle());
+  console.log("Error title :" + errorTitle);
   return returnErrorTitle() + "\n" + error;
 }
