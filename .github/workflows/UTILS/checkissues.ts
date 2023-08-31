@@ -1,8 +1,6 @@
 export let labels: { [key: string]: string } = {};
 export let errorTitle = "";
 
-console.log("LÄNGE: " + errorTitle.length);
-
 export function identify(title: string) {
   if (
     (title.includes("🐛") && title.includes("✨")) ||
@@ -60,16 +58,15 @@ export function cleanBody(
 
 function localerrorAdd(value: string) {
   if (errorTitle.length == 0) {
-    console.log("1");
+    console.log("localerroradd if 1");
     errorTitle == "Errors in the Title: \n" + value;
   } else {
     errorTitle = errorTitle + value;
-    console.log("2");
+    console.log("localerroradd if 2");
   }
   console.log(errorTitle);
 }
 
 export function returnErrorTitle() {
-  console.log("in checkissues");
   return errorTitle;
 }
