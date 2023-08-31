@@ -57,7 +57,7 @@ function cleanup(key: string) {
         "!What Platforms whould this feature/enhancement affect?: cant be empty"
       );
   }
-  if (key == "  Alternatives/Workarounds") {
+  if (key == " Alternatives/Workarounds") {
     let value = labels[key];
     console.log("ALTERNATIVES LENGTH: " + value.length);
     if (value != "" && value != null && value.length >= 5) {
