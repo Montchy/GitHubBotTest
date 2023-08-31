@@ -19,6 +19,7 @@ export function cleanBodyFeature(title: string, body: string) {
 function cleanup(key: string) {
   if (key == " What feature or enhancement are you suggesting?") {
     let value = labels[key];
+    console.log(value.length);
     if (value != "" && value != null && value.length >= 5) {
     } else
       errorAdd(
@@ -35,6 +36,7 @@ function cleanup(key: string) {
   }
   if (key == " Alternatives/Workarounds") {
     let value = labels[key];
+    console.log(value.length);
     if (value != "" && value != null && value.length >= 5) {
     } else errorAdd(" _!_ Alternatives/Workarounds:  Not enough information\n");
   }
