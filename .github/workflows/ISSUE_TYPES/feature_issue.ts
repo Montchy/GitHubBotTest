@@ -9,7 +9,7 @@ let error = "";
 let tierror = "";
 
 export function cleanBodyFeature(title: string, body: string) {
-  cleanBody(title, body, "✨", tierror);
+  cleanBody(title, body, "✨", error);
 
   for (const key in labels) {
     if (labels.hasOwnProperty(key)) {
