@@ -27,11 +27,9 @@ export function identify(title: string) {
 
 function cleanTitle(title: string, emoji: string, error: string) {
   if (title.includes("emoji") && title.indexOf("emoji") > 0) {
-    console.log("Titel 1");
     localerrorAdd("!Title: Emoji has to be at the beginning of your Title \n");
     return "w";
   } else if (title.length < 5) {
-    console.log("Titel 2");
     localerrorAdd("!Title: Title is to short \n");
     return "w";
   } else return "w";
@@ -62,9 +60,12 @@ export function cleanBody(
 }
 
 function localerrorAdd(value: string) {
+  console.log("länge in function: " + value.length);
   if (value == null || value.length == 0 || value == "") {
+    console.log("1");
     errorTitle == "Errors in the Title: \n" + value + "\n" + "\n";
   } else {
     errorTitle = errorTitle + value;
+    console.log("2");
   }
 }
