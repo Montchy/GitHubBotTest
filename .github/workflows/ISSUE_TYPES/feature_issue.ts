@@ -1,4 +1,4 @@
-import { cleanBody, labels, errorTitle } from "../UTILS/checkissues";
+import { cleanBody, labels, returnErrorTitle } from "../UTILS/checkissues";
 
 let error = "";
 
@@ -47,5 +47,5 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorFeature() {
-  return errorTitle + "\n" + error;
+  return returnErrorTitle + "\n" + error;
 }

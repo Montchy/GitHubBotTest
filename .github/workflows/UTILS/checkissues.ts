@@ -62,9 +62,13 @@ export function cleanBody(
 function localerrorAdd(value: string) {
   if (errorTitle.length == 0) {
     console.log("1");
-    errorTitle == "Errors in the Title: \n" + value + "\n" + "\n";
+    errorTitle == "Errors in the Title: \n" + value;
   } else {
     errorTitle = errorTitle + value;
     console.log("2");
   }
+}
+
+export function returnErrorTitle() {
+  return errorTitle;
 }

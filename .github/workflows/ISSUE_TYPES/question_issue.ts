@@ -1,5 +1,10 @@
 import { isSemVer } from "../UTILS/helpingMethods";
-import { cleanBody, labels, errorTitle } from "../UTILS/checkissues";
+import {
+  cleanBody,
+  labels,
+  errorTitle,
+  returnErrorTitle,
+} from "../UTILS/checkissues";
 
 let error = "";
 
@@ -45,5 +50,5 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorQuestion() {
-  return errorTitle + "\n" + error;
+  return returnErrorTitle + "\n" + error;
 }
