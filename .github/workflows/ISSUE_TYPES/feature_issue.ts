@@ -24,7 +24,7 @@ function cleanup(key: string) {
     if (value != "" && value != null && value.length >= 5) {
     } else
       errorAdd(
-        "!What feature or enhancement are you suggesting?: Empty or less than 5 letters\n"
+        "!What feature or enhancement are you suggesting?:  Not enough information\n"
       );
   }
   if (key == " What Platforms whould this feature/enhancement affect?") {
@@ -38,20 +38,18 @@ function cleanup(key: string) {
   if (key == " Alternatives/Workarounds") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else
-      errorAdd("!Alternatives/Workarounds: Empty or less than 5 letters\n");
+    } else errorAdd("!Alternatives/Workarounds:  Not enough information\n");
   }
 }
 
 function errorAdd(value: string) {
   if (error == "") {
-    error = "Errors: \n" + value;
+    error = "Errors in the Body: \n" + value;
   } else {
     error = error + value;
   }
 }
 
 export function returnErrorFeature() {
-  console.log("Error title :" + tierror);
   return tierror + "\n" + error;
 }

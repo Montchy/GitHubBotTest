@@ -7,9 +7,10 @@ import {
 } from "../UTILS/checkissues";
 
 let error = "";
+let tierror = "";
 
 export function cleanBodyQuestion(title: string, body: string) {
-  cleanBody(title, body, "✨", error);
+  tierror = "" + cleanBody(title, body, "✨", error);
 
   for (const key in labels) {
     if (labels.hasOwnProperty(key)) {
@@ -23,12 +24,12 @@ function cleanup(key: string) {
   if (key == " Question") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else errorAdd("!Question: Empty or less than 5 letters\n");
+    } else errorAdd("!Question:  Not enough information\n");
   }
   if (key == " What I tried") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else errorAdd("!What I tried: Empty or less than 5 letters\n");
+    } else errorAdd("!What I tried:  Not enough information\n");
   }
   if (key == " VisionCamera Version") {
     let value = labels[key];
@@ -43,12 +44,12 @@ function cleanup(key: string) {
 
 function errorAdd(value: string) {
   if (error == "") {
-    error = "Errors: \n" + value;
+    error = "Errors in the Body: \n" + value;
   } else {
     error = error + value;
   }
 }
 
 export function returnErrorQuestion() {
-  return returnErrorTitle() + "\n" + error;
+  return tierror + "\n" + error;
 }
