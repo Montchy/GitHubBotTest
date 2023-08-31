@@ -1,3 +1,4 @@
+import { globalAdd } from "../ISSUE_TYPES/feature_issue";
 export let labels: { [key: string]: string } = {};
 export let errorTitle = "";
 
@@ -26,10 +27,12 @@ export function identify(title: string) {
 
 function cleanTitle(title: string, emoji: string, error: string) {
   if (title.includes("emoji") && title.indexOf("emoji") > 0) {
-    localerrorAdd("!Title: Emoji has to be at the beginning of your Title \n");
+    //localerrorAdd("!Title: Emoji has to be at the beginning of your Title \n");
+    globalAdd("!Title: Emoji has to be at the beginning of your Title \n");
     return "w";
   } else if (title.length < 5) {
-    localerrorAdd("!Title: Title is to short \n");
+    //localerrorAdd("!Title: Title is to short \n");
+    globalAdd("!Title: Title is to short \n");
     return "w";
   } else return "w";
 }
