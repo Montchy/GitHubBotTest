@@ -9,7 +9,7 @@ let error = "";
 let tierror = "";
 
 export function cleanBodyFeature(title: string, body: string) {
-  cleanBody(title, body, "✨", error);
+  cleanBody(title, body, "✨", tierror);
 
   for (const key in labels) {
     if (labels.hasOwnProperty(key)) {
@@ -56,14 +56,4 @@ export function returnErrorFeature() {
   console.log("Return error title" + returnErrorTitle());
   console.log("Error title :" + errorTitle);
   return returnErrorTitle() + "\n" + error;
-}
-
-export function globalAdd(value: string) {
-  if (errorTitle.length == 0) {
-    console.log("1");
-    tierror == "Errors in the Title: \n" + value;
-  } else {
-    tierror = tierror + value;
-    console.log("2");
-  }
 }
