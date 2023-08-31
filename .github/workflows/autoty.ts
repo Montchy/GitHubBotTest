@@ -50,7 +50,7 @@ async function run() {
 
     if (identity == "bug") {
       cleanBodyBug(title, body + "");
-      if (containsLetters(returnErrorFeature())) {
+      if (containsLetters(returnErrorBug())) {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
@@ -112,7 +112,7 @@ async function run() {
     if (identity == "question") {
       cleanBodyQuestion(title, body + "");
 
-      if (containsLetters(returnErrorFeature())) {
+      if (containsLetters(returnErrorQuestion())) {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
