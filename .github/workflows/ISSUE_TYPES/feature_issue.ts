@@ -37,7 +37,7 @@ function cleanup(key: string) {
   if (key == " Alternatives/Workarounds") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= toShort) {
-    } else errorAdd(" _!_ Alternatives/Workarounds:  Not enough information\n");
+    } else errorAdd("! Alternatives/Workarounds:  Not enough information\n");
   }
 }
 
