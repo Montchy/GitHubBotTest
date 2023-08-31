@@ -51,5 +51,10 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorQuestion() {
-  return tierror + "\n" + error;
+  if (tierror + "\n" + error != undefined) {
+    return tierror + "\n" + error;
+  } else {
+    console.log("undefined error");
+    return "";
+  }
 }
