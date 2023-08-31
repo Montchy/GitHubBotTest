@@ -70,5 +70,6 @@ function localerrorAdd(value: string) {
 }
 
 export function returnErrorTitle() {
+  console.log("in checkissues");
   return errorTitle;
 }
