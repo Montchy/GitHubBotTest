@@ -68,6 +68,7 @@ function localerrorAdd(value: string) {
     errorTitle == "Erros in the Title: \n" + value + "\n" + "\n";
     console.log("IN ERROR ADD TITLE");
   } else {
+    console.log("IN ERROR ADD TITLE22222");
     errorTitle = errorTitle + value;
   }
 }
