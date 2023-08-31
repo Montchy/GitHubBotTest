@@ -2,8 +2,14 @@ import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 import { identify } from "./UTILS/checkissues";
 import { returnErrorBug, cleanBodyBug } from "./ISSUE_TYPES/bug_issue";
-import { returnErrorFeature } from "./ISSUE_TYPES/feature_issue";
-import { returnErrorQuestion } from "./ISSUE_TYPES/question_issue";
+import {
+  cleanBodyFeature,
+  returnErrorFeature,
+} from "./ISSUE_TYPES/feature_issue";
+import {
+  cleanBodyQuestion,
+  returnErrorQuestion,
+} from "./ISSUE_TYPES/question_issue";
 
 async function run() {
   try {
@@ -71,7 +77,7 @@ async function run() {
       }
     }
     if (identity == "feature") {
-      //TODO
+      cleanBodyFeature(title, body + "");
       console.log(identity);
 
       if (returnErrorFeature() != "") {
@@ -100,7 +106,7 @@ async function run() {
       }
     }
     if (identity == "question") {
-      //TODO
+      cleanBodyQuestion(title, body + "");
 
       if (returnErrorQuestion() != "") {
         await octokit.rest.issues.createComment({
