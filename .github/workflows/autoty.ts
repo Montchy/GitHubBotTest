@@ -1,7 +1,7 @@
 import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
 import { identify } from "./UTILS/checkissues";
-import { returnErrorBug } from "./ISSUE_TYPES/bug_issue";
+import { returnErrorBug, cleanBodyBug } from "./ISSUE_TYPES/bug_issue";
 import { returnErrorFeature } from "./ISSUE_TYPES/feature_issue";
 import { returnErrorQuestion } from "./ISSUE_TYPES/question_issue";
 
@@ -42,6 +42,7 @@ async function run() {
     const identity = identify(title);
 
     if (identity == "bug") {
+      cleanBodyBug(title, body + "");
       if (returnErrorBug() != "") {
         await octokit.rest.issues.createComment({
           owner: owner,
