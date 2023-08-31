@@ -1,8 +1,12 @@
 import * as core from "@actions/core";
 import { context, getOctokit } from "@actions/github";
-import { cleanBodyBug, returnErrorBug } from "./bug_issue";
-import { identify } from "./checkissues";
-import { cleanBodyFeature, returnErrorFeature } from "./feature_issue";
+import { cleanBodyBug, returnErrorBug } from "./ISSUE_TYPES/bug_issue";
+import { identify } from "./UTILS/checkissues";
+import {
+  cleanBodyFeature,
+  returnErrorFeature,
+} from "./ISSUE_TYPES/feature_issue";
+import { cleanBodyQuestion } from "./ISSUE_TYPES/question_issue";
 
 async function run() {
   try {
@@ -39,7 +43,7 @@ async function run() {
     const ss = issue.data.labels.toString();
 
     const identity = identify(title);
-    const cleanBody = cleanBodyFeature(title, body + "");
+    const cleanBody = cleanBodyQuestion(title, body + "");
 
     if (identity == "bug") {
       if (returnErrorBug() != "") {
