@@ -22,7 +22,7 @@ function cleanup(key: string) {
     if (value != "" && value != null && value.length >= 5) {
     } else
       errorAdd(
-        "!What feature or enhancement are you suggesting?:  Not enough information\n"
+        "_!_What feature or enhancement are you suggesting?:  Not enough information\n"
       );
   }
   if (key == " What Platforms whould this feature/enhancement affect?") {
@@ -30,19 +30,19 @@ function cleanup(key: string) {
     if (value != null) {
     } else
       errorAdd(
-        "!What Platforms whould this feature/enhancement affect?: cant be empty"
+        "_!_What Platforms whould this feature/enhancement affect?: cant be empty"
       );
   }
   if (key == " Alternatives/Workarounds") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else errorAdd("!Alternatives/Workarounds:  Not enough information\n");
+    } else errorAdd("_!_Alternatives/Workarounds:  Not enough information\n");
   }
 }
 
 function errorAdd(value: string) {
   if (error == "") {
-    error = "Errors in the Body: \n" + value;
+    error = "**Errors in the Body:** \n" + value;
   } else {
     error = error + value;
   }
