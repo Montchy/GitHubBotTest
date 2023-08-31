@@ -22,5 +22,6 @@ export function errorAdd(value: string, error: string) {
 export function errorAddTitle(value: string, error: string) {
   if (value != null || value != "") {
     error == "Erros in the Title: \n" + value + "\n" + "\n";
-  } else console.log("not title errors found");
+    console.log("IN ERROR ADD TITLE");
+  } else console.log("no title errors found");
 }
