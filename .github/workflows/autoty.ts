@@ -81,7 +81,6 @@ async function run() {
     }
     if (identity == "feature") {
       cleanBodyFeature(title, body + "");
-      console.log(identity);
 
       if (containsLetters(returnErrorFeature())) {
         await octokit.rest.issues.createComment({

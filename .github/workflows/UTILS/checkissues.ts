@@ -2,8 +2,9 @@ import { containsLetters } from "./helpingMethods";
 export let labels: { [key: string]: string } = {};
 export let errorTitle = "";
 
+console.log("LÄNGE: " + errorTitle.length);
+
 export function identify(title: string) {
-  console.log("Identifier is running...");
   if (
     (title.includes("🐛") && title.includes("✨")) ||
     (title.includes("🐛") && title.includes("❓")) ||
@@ -12,15 +13,12 @@ export function identify(title: string) {
     return "toManyEmojis";
   }
   if (title.includes("🐛")) {
-    console.log("Identity: BUG");
     return "bug";
   }
   if (title.includes("✨")) {
-    console.log("Identity: FEATURE");
     return "feature";
   }
   if (title.includes("❓")) {
-    console.log("Identity: QUESTION");
     return "question";
   } else {
     return "l";
@@ -29,11 +27,11 @@ export function identify(title: string) {
 
 function cleanTitle(title: string, emoji: string, error: string) {
   if (title.includes("emoji") && title.indexOf("emoji") > 0) {
-    console.log("TITLEERROR1");
+    console.log("Titel 1");
     localerrorAdd("!Title: Emoji has to be at the beginning of your Title \n");
     return "w";
   } else if (title.length < 5) {
-    console.log("TITITITTT ERROR 2");
+    console.log("Titel 2");
     localerrorAdd("!Title: Title is to short \n");
     return "w";
   } else return "w";
@@ -46,7 +44,6 @@ export function cleanBody(
   error: string
 ) {
   const cT = cleanTitle(title, emoji, error);
-  console.log("IN CHEKISSUES: " + errorTitle);
   if (cT == "w") {
     const parts = body.split("###");
 
