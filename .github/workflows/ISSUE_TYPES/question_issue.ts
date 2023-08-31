@@ -24,12 +24,12 @@ function cleanup(key: string) {
   if (key == " Question") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else errorAdd("_!_Question:  Not enough information\n");
+    } else errorAdd("!Question:  Not enough information\n");
   }
   if (key == " What I tried") {
     let value = labels[key];
     if (value != "" && value != null && value.length >= 5) {
-    } else errorAdd("_!_What I tried:  Not enough information\n");
+    } else errorAdd("!What I tried:  Not enough information\n");
   }
   if (key == " VisionCamera Version") {
     let value = labels[key];
@@ -37,7 +37,7 @@ function cleanup(key: string) {
 
     if (isSemVer(cleanvalue) == true) {
       return null;
-    } else errorAdd("_!_VisionCamera Version: Isn't SemVer!\n");
+    } else errorAdd("!VisionCamera Version: Isn't SemVer!\n");
   }
   return "Fatal error";
 }
