@@ -34,7 +34,12 @@ function cleanTitle(title: string, emoji: string) {
   return emr;
 }
 
-export function cleanBody(title: string, body: string, emoji: string) {
+export function cleanBody(
+  title: string,
+  body: string,
+  emoji: string,
+  error: string
+) {
   const cT = cleanTitle(title, emoji);
   console.log("EMR=" + cT);
 
