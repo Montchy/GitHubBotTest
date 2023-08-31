@@ -50,7 +50,7 @@ async function run() {
 
     if (identity == "bug") {
       cleanBodyBug(title, body + "");
-      if (containsLetters(returnErrorBug())) {
+      if (containsLetters(returnErrorBug()) && returnErrorBug() != undefined) {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
@@ -82,7 +82,10 @@ async function run() {
     if (identity == "feature") {
       cleanBodyFeature(title, body + "");
 
-      if (containsLetters(returnErrorFeature())) {
+      if (
+        containsLetters(returnErrorFeature()) &&
+        returnErrorFeature() != undefined
+      ) {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
@@ -112,7 +115,10 @@ async function run() {
     if (identity == "question") {
       cleanBodyQuestion(title, body + "");
 
-      if (containsLetters(returnErrorQuestion())) {
+      if (
+        containsLetters(returnErrorQuestion()) &&
+        returnErrorQuestion != undefined
+      ) {
         await octokit.rest.issues.createComment({
           owner: owner,
           repo: repo,
