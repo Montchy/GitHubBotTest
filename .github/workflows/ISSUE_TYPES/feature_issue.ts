@@ -4,7 +4,6 @@ let error = "";
 
 export function cleanBodyFeature(title: string, body: string) {
   cleanBody(title, body, "✨", error);
-  console.log("Errortitle: " + errorTitle);
 
   for (const key in labels) {
     if (labels.hasOwnProperty(key)) {
