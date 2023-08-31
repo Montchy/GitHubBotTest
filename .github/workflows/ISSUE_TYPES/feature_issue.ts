@@ -47,5 +47,6 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorFeature() {
+  console.log(returnErrorTitle());
   return returnErrorTitle() + "\n" + error;
 }
