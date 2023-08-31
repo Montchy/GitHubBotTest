@@ -27,12 +27,14 @@ export function identify(title: string) {
 
 function cleanTitle(title: string, emoji: string, error: string) {
   if (title.includes("emoji") && title.indexOf("emoji") > 0) {
+    console.log("TITLEERROR1");
     errorAdd(
       "!Title: Emoji has to be at the beginning of your Title \n",
       error
     );
     return "w";
   } else if (title.length < 5) {
+    console.log("TITITITTT ERROR 2");
     errorAdd("!Title: Title is to short \n", error);
     return "w";
   } else return "w";

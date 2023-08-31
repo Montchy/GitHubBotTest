@@ -60,7 +60,6 @@ function errorAdd(value: string) {
   } else {
     error = error + value;
   }
-  console.log(error);
 }
 
 export function returnErrorBug() {
