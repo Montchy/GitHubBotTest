@@ -63,5 +63,7 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorBug() {
-  return errorTitle + "\n" + error;
+  if (errorTitle != "" || errorTitle != null) {
+    return "Errors in the title: \n" + errorTitle + error;
+  } else return error;
 }
