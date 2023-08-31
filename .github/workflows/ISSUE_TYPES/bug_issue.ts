@@ -8,6 +8,8 @@ export function cleanBodyBug(title: string, body: string) {
   cleanBody(title, body, "🐛", error);
   console.log("Errortitle: " + errorTitle);
 
+  errorAddTitle(errorTitle, error);
+
   for (const key in labels) {
     if (labels.hasOwnProperty(key)) {
       const value = labels[key];
