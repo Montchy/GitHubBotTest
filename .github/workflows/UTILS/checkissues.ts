@@ -66,6 +66,7 @@ function localerrorAdd(value: string) {
     errorTitle = errorTitle + value;
     console.log("2");
   }
+  console.log(errorTitle);
 }
 
 export function returnErrorTitle() {
