@@ -50,5 +50,5 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorQuestion() {
-  return returnErrorTitle + "\n" + error;
+  return returnErrorTitle() + "\n" + error;
 }
