@@ -82,8 +82,11 @@ async function run() {
         console.log("Comment created successfully.");
       }
     }
+
+    /////////////////////##################################
     if (identity == "feature") {
       cleanBodyFeature(title, body + "");
+      console.log(returnErrorFeature());
 
       if (
         containsLetters(returnErrorFeature()) &&
