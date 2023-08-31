@@ -54,17 +54,6 @@ export function cleanBody(title: string, body: string, emoji: string) {
   }
 }
 
-/*
-      for (const key in labels) {
-        if (labels.hasOwnProperty(key)) {
-          const value = labels[key];
-          cleanup(key);
-        }
-      }
-    } else return "l";
-  }
-*/
-
 export function errorAdd(value: string) {
   if (error == "") {
     error = "Errors: \n" + value;

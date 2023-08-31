@@ -1,5 +1,7 @@
 import { isSemVer } from "../UTILS/helpingMethods";
-import { cleanBody, labels, errorAdd } from "../UTILS/checkissues";
+import { cleanBody, labels } from "../UTILS/checkissues";
+
+let error = "";
 
 export function cleanBodyBug(title: string, body: string) {
   cleanBody(title, body, "🐛");
@@ -49,4 +51,18 @@ function cleanup(key: string) {
     } else errorAdd("!VisionCamera Version: Isn't SemVer!\n");
   }
   return "Fatal error";
+}
+
+export function errorAdd(value: string) {
+  if (error == "") {
+    error = "Errors: \n" + value;
+  } else {
+    error = error + value;
+  }
+
+  console.log(error);
+}
+
+export function returnError() {
+  return error;
 }
