@@ -59,12 +59,12 @@ function cleanup(key: string) {
 
 function errorAdd(value: string) {
   if (error == "") {
-    error = "Errors: \n" + value;
+    error = "Errors in the Body: \n" + value;
   } else {
     error = error + value;
   }
 }
 
 export function returnErrorBug() {
-  return errorTitle + error;
+  return errorTitle + "\n" + error;
 }
