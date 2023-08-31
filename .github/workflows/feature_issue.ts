@@ -73,5 +73,6 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorFeature() {
+  console.log(error);
   return error;
 }
