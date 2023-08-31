@@ -26,13 +26,10 @@ export function identify(title: string) {
 
 function cleanTitle(title: string, emoji: string, error: string) {
   if (title.includes("emoji") && title.indexOf("emoji") > 0) {
-    localerrorAdd(
-      "!Title: Emoji has to be at the beginning of your Title \n",
-      error
-    );
+    localerrorAdd("!Title: Emoji has to be at the beginning of your Title \n");
     return "w";
   } else if (title.length < 5) {
-    localerrorAdd("!Title: Title is to short \n", error);
+    localerrorAdd("!Title: Title is to short \n");
     return "w";
   } else return "w";
 }
@@ -61,12 +58,12 @@ export function cleanBody(
   }
 }
 
-function localerrorAdd(value: string, error: string) {
+function localerrorAdd(value: string) {
   if (errorTitle.length == 0) {
     console.log("1");
-    error == "Errors in the Title: \n" + value;
+    errorTitle == "Errors in the Title: \n" + value;
   } else {
-    error = error + value;
+    errorTitle = errorTitle + value;
     console.log("2");
   }
 }
