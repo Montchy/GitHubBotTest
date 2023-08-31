@@ -5,6 +5,7 @@ let error = "";
 
 export function cleanBodyBug(title: string, body: string) {
   cleanBody(title, body, "🐛", error);
+  console.log("LABELS:" + labels);
 
   for (const key in labels) {
     if (labels.hasOwnProperty(key)) {
@@ -59,7 +60,6 @@ export function errorAdd(value: string) {
   } else {
     error = error + value;
   }
-
   console.log(error);
 }
 
