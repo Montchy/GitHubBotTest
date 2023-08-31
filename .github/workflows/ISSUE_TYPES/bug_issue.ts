@@ -66,5 +66,5 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorBug() {
-  return error;
+  return errorTitle + error;
 }
