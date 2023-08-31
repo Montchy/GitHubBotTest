@@ -25,11 +25,9 @@ export function identify(title: string) {
 function cleanTitle(title: string, emoji: string) {
   let emr = "";
   if (title.includes("emoji") && title.indexOf("emoji") > 0) {
-    // localerrorAdd("!Title: Emoji has to be at the beginning of your Title \n");
-    emr += "_!_Title: Emoji has to be at the beginning of your Title \n";
+    emr += "!Title: Emoji has to be at the beginning of your Title \n";
   } else if (title.length < 5) {
-    //   localerrorAdd("!Title: Title is to short \n");
-    emr += "_!_Title: Title is to short \n";
+    emr += "!Title: Title is to short \n";
   }
   return emr;
 }
@@ -58,14 +56,6 @@ export function cleanBody(
 
   if (containsLetters(cT)) {
     return "Errors in the Title:  \n" + cT;
-  }
-}
-
-function localerrorAdd(value: string) {
-  if (errorTitle.length == 0) {
-    errorTitle == "**Errors in the Title: **\n" + value;
-  } else {
-    errorTitle = errorTitle + value;
   }
 }
 

@@ -52,11 +52,11 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorQuestion() {
-  if (tierror != undefined && error != undefined) {
+  if (!tierror.includes("undefined") && !error.includes("undefined")) {
     return tierror + "\n" + error;
-  } else if (tierror == undefined) {
+  } else if (tierror.includes("undefined")) {
     return error;
-  } else if (error == undefined) {
+  } else if (error.includes("undefined")) {
     return tierror;
   } else return "";
 }

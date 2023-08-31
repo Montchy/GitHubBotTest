@@ -51,13 +51,10 @@ function errorAdd(value: string) {
 
 export function returnErrorFeature() {
   if (!tierror.includes("undefined") && !error.includes("undefined")) {
-    console.log("1");
     return tierror + "\n" + error;
   } else if (tierror.includes("undefined")) {
-    console.log("2");
     return error;
   } else if (error.includes("undefined")) {
-    console.log("3");
     return tierror;
   } else return "";
 }
