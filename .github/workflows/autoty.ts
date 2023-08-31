@@ -110,7 +110,7 @@ async function run() {
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: "**Thank you* for sending in this feature request!",
+          body: "**Thank you** for sending in this feature request!",
         });
 
         console.log("Comment created successfully.");
