@@ -11,7 +11,7 @@ function cleanTitle(title: string) {
   } else return "w";
 }
 
-export function cleanBody(title: string, body: string) {
+export function cleanBodyFeature(title: string, body: string) {
   if (cleanTitle(title) == "w") {
     const parts = body.split("###");
 
