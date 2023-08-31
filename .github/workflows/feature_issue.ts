@@ -42,7 +42,6 @@ export function cleanBodyFeature(title: string, body: string) {
 function cleanup(key: string) {
   if (key == " What feature or enhancement are you suggesting?") {
     let value = labels[key];
-    console.log("WHAT FEATURE LENGTH: " + value.length);
     if (value != "" && value != null && value.length >= 5) {
     } else
       errorAdd(
@@ -59,7 +58,6 @@ function cleanup(key: string) {
   }
   if (key == " Alternatives/Workarounds") {
     let value = labels[key];
-    console.log("ALTERNATIVES LENGTH: " + value.length);
     if (value != "" && value != null && value.length >= 5) {
     } else
       errorAdd("!Alternatives/Workarounds: Empty or less than 5 letters\n");
@@ -75,6 +73,5 @@ function errorAdd(value: string) {
 }
 
 export function returnErrorFeature() {
-  console.log(error);
   return error;
 }
