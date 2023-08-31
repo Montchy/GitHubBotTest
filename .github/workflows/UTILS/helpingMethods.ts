@@ -28,3 +28,12 @@ export function errorAddTitle(value: string, error: string) {
     error = error + value;
   }
 }
+
+export function containsLetters(inputString: string): boolean {
+  for (const char of inputString) {
+    if (/[a-zA-Z]/.test(char)) {
+      return true;
+    }
+  }
+  return false;
+}
