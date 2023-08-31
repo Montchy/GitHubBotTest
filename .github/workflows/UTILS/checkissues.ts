@@ -1,3 +1,4 @@
+import { containsLetters } from "./helpingMethods";
 export let labels: { [key: string]: string } = {};
 export let errorTitle = "";
 
@@ -64,11 +65,9 @@ export function cleanBody(
 }
 
 function localerrorAdd(value: string) {
-  if (value == null || value == "") {
+  if (containsLetters(value)) {
     errorTitle == "Erros in the Title: \n" + value + "\n" + "\n";
-    console.log("IN ERROR ADD TITLE");
   } else {
-    console.log("IN ERROR ADD TITLE22222");
     errorTitle = errorTitle + value;
   }
 }
