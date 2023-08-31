@@ -54,7 +54,9 @@ async function run() {
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: returnErrorBug(),
+          body:
+            "There were errors while sending this issue because you disregarded certain guidelines: \n\n" +
+            returnErrorBug(),
         });
 
         await octokit.rest.issues.update({
@@ -85,7 +87,9 @@ async function run() {
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: returnErrorFeature(),
+          body:
+            "There were errors while sending this issue because you disregarded certain guidelines: \n\n" +
+            returnErrorFeature(),
         });
 
         await octokit.rest.issues.update({
@@ -113,7 +117,9 @@ async function run() {
           owner: owner,
           repo: repo,
           issue_number: issueNumber,
-          body: returnErrorQuestion(),
+          body:
+            "There were errors while sending this issue because you disregarded certain guidelines: \n\n" +
+            returnErrorQuestion(),
         });
 
         await octokit.rest.issues.update({
